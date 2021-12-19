@@ -11,128 +11,11 @@
 		<div class="image-wrapper">
 
 			<div class="mySlides fade">
-				<img src="img/side1.gif">
+				<img id="sl-img" src="img/side1.gif">
 			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side2.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side3.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side4.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side5.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side6.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side7.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side8.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side9.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side10.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side11.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side12.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side13.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side14.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side15.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side16.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side17.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side18.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side19.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side20.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side21.gif">
-			</div>
-
-			<div class="mySlides fade">
-				<img src="img/side22.gif">
-			</div>
-
-
-			<div class="mySlides fade">
-				<img src="img/side23.gif">
-			</div>
-
-
-			<a class="next" onclick="plusSlides(1)">&#8734;</a>
+            <a class="next" onclick="rnImg()">&#8734;</a>
 		</div>
 		<br>
-
-		<div style="text-align:center">
-			<span class="reqdVar" onclick="currentSlide(1)"></span>
-			<span class="reqdVar" onclick="currentSlide(2)"></span>
-			<span class="reqdVar" onclick="currentSlide(3)"></span>
-			<span class="reqdVar" onclick="currentSlide(4)"></span>
-			<span class="reqdVar" onclick="currentSlide(5)"></span>
-			<span class="reqdVar" onclick="currentSlide(6)"></span>
-			<span class="reqdVar" onclick="currentSlide(7)"></span>
-			<span class="reqdVar" onclick="currentSlide(8)"></span>
-			<span class="reqdVar" onclick="currentSlide(9)"></span>
-			<span class="reqdVar" onclick="currentSlide(10)"></span>
-			<span class="reqdVar" onclick="currentSlide(11)"></span>
-			<span class="reqdVar" onclick="currentSlide(12)"></span>
-			<span class="reqdVar" onclick="currentSlide(13)"></span>
-			<span class="reqdVar" onclick="currentSlide(14)"></span>
-			<span class="reqdVar" onclick="currentSlide(15)"></span>
-			<span class="reqdVar" onclick="currentSlide(16)"></span>
-			<span class="reqdVar" onclick="currentSlide(17)"></span>
-			<span class="reqdVar" onclick="currentSlide(18)"></span>
-			<span class="reqdVar" onclick="currentSlide(19)"></span>
-			<span class="reqdVar" onclick="currentSlide(20)"></span>
-			<span class="reqdVar" onclick="currentSlide(21)"></span>
-			<span class="reqdVar" onclick="currentSlide(22)"></span>
-			<span class="reqdVar" onclick="currentSlide(23)"></span>
-		</div>
 
 		<header>
 			<br>
@@ -205,46 +88,13 @@
 			}
 			updateClock(); // initial call
 
-			// Set local storage
-			var slideIx = Number(localStorage.getItem('slideIndex') || 1);
+            function rnImg(){
+                let num = Math.ceil(Math.random() * 23)
+                let img=`img/side${num}.gif`
+                document.getElementById('sl-img').src=img
+            }
+            rnImg()
 
-			var slideIndex = slideIx;
-			showSlides(slideIndex);
-
-			// Next/previous controls
-			function plusSlides(n) {
-				showSlides(slideIndex += n);
-				localStorage.setItem('slideIndex', slideIndex);
-				console.log(localStorage.getItem('slideIndex'));
-			}
-
-			// Thumbnail image controls
-			function currentSlides(n) {
-				showSlides(slideIndex = n);
-				localStorage.setItem('slideIndex', slideIndex);
-				console.log(localStorage.getItem('slideIndex'));
-			}
-
-			// Show slides
-			function showSlides(n) {
-				var i;
-				var slides = document.getElementsByClassName("mySlides");
-				var reqdVars = document.getElementsByClassName("reqdVar");
-				if (n > slides.length) {
-					slideIndex = 1;
-				}
-				if (n < 1) {
-					slideIndex = slides.length;
-				}
-				for (i = 0; i < slides.length; i++) {
-					slides[i].style.display = "none";
-				}
-				for (i = 0; i < reqdVars.length; i++) {
-					reqdVars[i].className = reqdVars[i].className.replace(" active", "");
-				}
-				slides[slideIndex-1].style.display = "block";
-				reqdVars[slideIndex-1].className += " active";
-			}
 			</script>
 		</div>
 	</body>
